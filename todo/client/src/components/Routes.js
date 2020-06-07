@@ -18,12 +18,12 @@ export default () => {
       <Router>
         <ul style={{ display: 'flex', listStyle: 'none', background: '#ddd', padding: '10px' }}>
           <li style={{ marginRight: '20px' }}><Link to="/">user todos</Link></li>
-          <li style={{ marginRight: '20px' }}><Link to="/admin/todos">admin todos</Link></li>
-          <li><Link to="/admin/users">admin users</Link></li>
+          {user.admin && <li style={{ marginRight: '20px' }}><Link to="/admin/todos">admin todos</Link></li>}
+          {user.admin && <li><Link to="/admin/users">admin users</Link></li>}
         </ul>
         <Route path="/" exact component={UserTodos} />
-        <Route path="/admin/todos" component={AdminTodos} />
-        <Route path="/admin/users" component={AdminUsers} />
+        {user.admin && <Route path="/admin/todos" component={AdminTodos} />}
+        {user.admin && <Route path="/admin/users" component={AdminUsers} />}
       </Router>
     )
   }
