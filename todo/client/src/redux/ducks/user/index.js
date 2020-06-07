@@ -24,21 +24,9 @@ export default (state = initialState, action) => {
   }
 }
 
-function toggleTheUser(user) {
-  return {
-    type: SET_USER,
-    payload: {
-      id: user.id == 1 ? 2 : 1,
-      admin: user.id == 1 ? true : false
-    }
-  }
-}
-
 // 6. custom hook
 export function useUser() {
   const dispatch = useDispatch()
   const user = useSelector(appState => appState.userState.user)
-  const toggleUser = () => dispatch(toggleTheUser(user))
-
-  return { user, toggleUser }
+  return { user }
 }
