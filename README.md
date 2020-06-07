@@ -10,10 +10,3 @@
 1. Login
 2. Signup
 3. Edit user
-
-
-## mocks shown below:
-
-![Alt text](mocks/todos-mock.png?raw=true "Todos View")
-![Alt text](mocks/admin-todos.png?raw=true "Admin Todos View")
-![Alt text](mocks/admin-users.png?raw=true "Admin Users View")
