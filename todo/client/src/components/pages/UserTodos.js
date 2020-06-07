@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useUser } from '../../hooks'
+import { useUser, useExample } from '../../hooks'
 import axios from 'axios'
 import { Table } from 'semantic-ui-react'
 import { Button, Icon } from 'semantic-ui-react'
@@ -7,9 +7,17 @@ import Modal from '../ui/Modal'
 
 export default () => {
   const { user, toggleUser } = useUser()
+  const { getExampleResolved } = useExample()
   const [modalVisible, setModalVisibility] = useState(false)
   function showModal() {
     setModalVisibility(true)
+  }
+
+  function fakeHandleFormSubmit() {
+    getExampleResolved().then(resp => {
+      console.log('during modal close', resp)
+      setModalVisibility(false)
+    })
   }
 
   useEffect(() => {
@@ -20,7 +28,12 @@ export default () => {
       {
         modalVisible &&
         <Modal dismiss={() => setModalVisibility(false)}>
-          <div>form to create todo...</div>
+          <div>
+            form to create todo...
+            <Button icon onClick={fakeHandleFormSubmit}>
+              <Icon name='plus' />
+            </Button>
+          </div>
         </Modal>
       }
 

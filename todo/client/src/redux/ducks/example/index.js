@@ -53,6 +53,20 @@ function getExampleData() {
   }
 }
 
+function getDataAndResolve() {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      axios.get('/api').then(resp => {
+        dispatch({
+          type: EXAMPLE_ACTION,
+          payload: resp.data
+        })
+        resolve('coming from example duck!')
+      })
+    })
+  }
+}
+
 function resetAction() {
   return {
     type: RESET_ACTION
@@ -68,10 +82,11 @@ export function useExample() {
   const asyncaction = () => dispatch(someAsyncAction())
   const reset = () => dispatch(resetAction())
   const getExample = () => dispatch(getExampleData())
+  const getExampleResolved = () => dispatch(getDataAndResolve())
 
   useEffect(() => {
     console.log("mounting component")
   }, [])
 
-  return { example, syncaction, asyncaction, reset, getExample }
+  return { example, syncaction, asyncaction, reset, getExample, getExampleResolved }
 }
