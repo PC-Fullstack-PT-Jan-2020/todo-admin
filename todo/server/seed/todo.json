@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "text": "todo 1",
+    "status": "active",
+    "user": 1
+  },
+  {
+    "id": 2,
+    "text": "todo 2",
+    "status": "complete",
+    "user": 1
+  },
+  {
+    "id": 3,
+    "text": "todo 3",
+    "status": "active",
+    "user": 2
+  },
+  {
+    "id": 3,
+    "text": "todo 4",
+    "status": "active",
+    "user": 2
+  }
+]
